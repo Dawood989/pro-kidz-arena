@@ -325,11 +325,11 @@ async function sendToGoogleSheet(uid, gamename, whatsapp, transaction, screensho
     formData.append("whatsapp", whatsapp);
     formData.append("transaction", transaction);
 
-    // Upload screenshot
+    // IMPORTANT
     formData.append("screenshot", screenshot.files[0]);
 
     const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbzU2yZE6JAZ4yfO_zPB45uQfXlJh748oRBXG3Rt83qlbQEKqflE0bPW3UM-vsvZko9t/exec",
+        "https://script.google.com/macros/s/AKfycbwQG6Q6Fh0JnY4AszBnhJ1xn9vCKkYf1LUJleOgHRrmns-aM22U3QLA7ZMf2A2YXCgP/exec",
         {
             method: "POST",
             body: formData
@@ -385,17 +385,11 @@ async function submitPayment(){
 }
 
 let result = await sendToGoogleSheet(
-
     uid.value,
-
     game.value,
-
     whatsapp.value,
-
     transaction.value,
-
     screenshot
-
 );
 
 if(result.result=="success"){
