@@ -329,7 +329,7 @@ async function sendToGoogleSheet(uid, gamename, whatsapp, transaction, screensho
     formData.append("screenshot", screenshot.files[0]);
 
     const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwQG6Q6Fh0JnY4AszBnhJ1xn9vCKkYf1LUJleOgHRrmns-aM22U3QLA7ZMf2A2YXCgP/exec",
+        "https://script.google.com/macros/s/AKfycbzU2yZE6JAZ4yfO_zPB45uQfXlJh748oRBXG3Rt83qlbQEKqflE0bPW3UM-vsvZko9t/exec",
         {
             method: "POST",
             body: formData
