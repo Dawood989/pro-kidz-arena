@@ -316,32 +316,24 @@ function closePopup(){
     document.getElementById("payment-popup").style.display = "none";
 
 }
-async function sendToGoogleSheet(uid,gamename,whatsapp,transaction){
+async function sendToGoogleSheet(uid, gamename, whatsapp, transaction){
 
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyBvlpN1yJ1DJN---hExSW7X1gs9n31tI4nMW-Aajm-srM4ILQNnxpVyylMdfGs25ph/exec",{
+    const formData = new FormData();
 
-        method:"POST",
+    formData.append("uid", uid);
+    formData.append("gamename", gamename);
+    formData.append("whatsapp", whatsapp);
+    formData.append("transaction", transaction);
 
-        headers:{
-            "Content-Type":"application/json"
-        },
-
-        body:JSON.stringify({
-
-            uid:uid,
-
-            gamename:gamename,
-
-            whatsapp:whatsapp,
-
-            transaction:transaction
-
-        })
-
-    });
+    const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbyBvlpN1yJ1DJN---hExSW7X1gs9n31tI4nMW-Aajm-srM4ILQNnxpVyylMdfGs25ph/exec",
+        {
+            method: "POST",
+            body: formData
+        }
+    );
 
     return await response.json();
-
 }
 async function submitPayment(){
 
